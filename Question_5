@@ -1,0 +1,89 @@
+import java.util.*;
+
+public class Q5 {
+
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(" Enter the String ");
+
+        String s="";
+
+        s+=sc.nextLine();
+
+
+        System.out.println("Enter the Reference String");
+
+        String r="";
+
+        r+=sc.nextLine();
+
+        sc.close();
+
+
+        int r_len = r.length();
+
+        int[] count = new int[r_len];
+
+        char toggle_c ;
+
+        for(int i=0;i<s.length();i++){
+
+            String ch = "" ;
+
+            char c = s.charAt(i);
+
+            ch = ch + c;
+
+            toggle_c = c ;
+
+            if(Character.isLowerCase(c)){
+
+                toggle_c = Character.toUpperCase(toggle_c);
+            }
+
+            if(Character.isUpperCase(c)){
+
+                toggle_c = Character.toLowerCase(toggle_c);
+            }
+
+            String toggle_ch = "";
+
+            toggle_ch = toggle_ch + toggle_c ;
+
+            if((r.contains(ch))) {
+
+                int r_index = r.indexOf(c) ;
+
+                count[r_index]++ ;
+            }
+
+            else if(r.contains(toggle_ch)) {
+
+                int r_index = r.indexOf(toggle_c) ;
+
+                count[r_index]++ ;
+
+            }
+        }
+
+        for(int i=0;i<count.length;i++) {
+
+            System.out.println(" "+r.charAt(i)+" : "+count[i]);
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+}

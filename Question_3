@@ -1,0 +1,129 @@
+
+import java.util.*;
+
+public class Q3 {
+
+    public static Set<Character> convert(String s) {
+
+
+        Set<Character> set = new HashSet<>();
+
+        for (int i=0;i<s.length();i++) {
+
+            set.add(s.charAt(i));
+
+        }
+
+        return set;
+
+    }
+
+    public static boolean check(String big, String small) {
+
+        Set<Character> bigset = new HashSet<>();
+
+        Set<Character> smallset = new HashSet<>();
+
+        bigset = convert(big) ;
+
+        smallset = convert(small) ;
+
+        boolean check = bigset.containsAll(smallset);
+
+        return check ;
+
+    }
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(" Enter the Number Of Strings in X ");
+
+        int x_size = sc.nextInt();
+
+        System.out.println(" Enter the Strings in X ");
+
+        ArrayList<String> x = new ArrayList<>();
+
+        String xi ;
+
+        int i ;
+
+        for(i=1;i<=x_size;i++) {
+
+        xi = sc.next();
+
+        x.add(xi);
+    }
+
+        System.out.println(" Enter the Number Of Strings in Y ");
+
+        int y_size = sc.nextInt();
+
+        System.out.println(" Enter the Strings in Y ");
+
+        ArrayList<String> y = new ArrayList<>();
+
+        String yi ;
+
+        for(i=1;i<=y_size;i++) {
+
+            yi = sc.next();
+
+            y.add(yi);
+        }
+
+        int j ;
+
+        boolean checker = true ;
+
+        ArrayList<String> answer = new ArrayList<>();
+
+        for(i=0;i<x.size();i++){
+
+            checker = true ;
+
+            for(j=0;j<y.size();j++) {
+
+                if (!(check(x.get(i), y.get(j)))) {
+
+                    checker = false;
+                }
+
+            }
+
+            if(checker) {
+
+                answer.add(x.get(i));
+
+            }
+
+        }
+
+        System.out.println();
+        System.out.print(" Strings ");
+        for(i=0;i<answer.size();i++) {
+
+
+            System.out.print(" \" "+ answer.get(i)+ " \" "+ " , ");
+        }
+
+        System.out.print(" are superstrings in X ");
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

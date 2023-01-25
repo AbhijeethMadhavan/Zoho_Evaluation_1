@@ -1,0 +1,114 @@
+import java.util.* ;
+
+public class Q2_Better {
+
+    public static void split(ArrayList<Integer> a, int sum , int parts) {
+
+        double SUM = sum ;
+
+        double PARTS = parts ;
+
+        double checkkk = SUM/ PARTS ;
+
+        if((checkkk%1)!=0) {
+
+            return ;
+        }
+
+        int check = sum / parts ;
+
+
+
+
+
+        int size = a.size();
+
+        int sum_check = 0 ;
+
+        int count = 0 ;
+
+        ArrayList<List<Integer>> t = new ArrayList<List<Integer>>();
+
+        List<Integer> f = new ArrayList<>();
+
+        int prev_index = -1 ;
+
+        for(int i=0;i<size;i++) {
+
+            sum_check = sum_check + a.get(i) ;
+
+            if(sum_check>check) {
+
+                return ;
+            }
+            if(sum_check==check) {
+
+                f = a.subList(prev_index+1,i+1);
+
+                t.add(new ArrayList<Integer>(f));
+
+                count ++ ;
+
+                sum_check= 0 ;
+
+                prev_index = i ;
+
+                if(count==parts) {
+
+                    System.out.println(parts + " Parts ");
+
+                    for(int j=0;j<t.size();j++) {
+
+                        System.out.print(t.get(j)+" ");
+
+                    }
+
+                    System.out.println();
+
+                }
+
+
+            }
+
+        }
+
+    }
+
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println(" Enter the Size of the Array");
+
+        int size = sc.nextInt();
+
+        System.out.println(" Enter the Elements of the Array");
+
+        ArrayList a = new ArrayList();
+
+        int[] arr = new int[size] ;
+
+        int sum = 0 ;
+
+        for(int i=0;i<size;i++) {
+
+            arr[i] = sc.nextInt();
+
+            a.add(arr[i]);
+
+            sum = sum + arr[i];
+        }
+
+        ArrayList<ArrayList<Integer>> x = new ArrayList<>();
+
+        for(int i=2;i<=size;i++) {
+
+            split(a,sum,i) ; }
+
+
+        }
+
+
+    }
+
